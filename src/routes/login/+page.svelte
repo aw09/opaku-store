@@ -1,6 +1,8 @@
 <script>
     import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
-    import {auth, googleProvider} from '../../firebase';
+    import { app, auth, googleProvider} from '../../firebase';
+    import { getAnalytics, setUserProperties } from "firebase/analytics";
+
     
     // function loginWithGoogle() {
 	// 	alert('clicked')
@@ -11,9 +13,15 @@
             // This gives you a Google Access Token. You can use it to access the Google API.
             const credential = GoogleAuthProvider.credentialFromResult(result);
             const token = credential?.accessToken;
+            const analytics = getAnalytics(app);
+
             // The signed-in user info.
             const user = result.user;
-            console.log(user);
+            setUserProperties(analytics, { 
+                email: user.email
+            });
+
+            window.location.href = '/';
         }).catch((error) => {
             // Handle Errors here.
             const errorCode = error.code;

@@ -8,7 +8,6 @@
     let userData;
     user.subscribe(value => {
         userData = value;
-    console.log(userData);
     });
 
     const closeNavbar = () =>  {
@@ -22,6 +21,8 @@
 
     const logout = () => {
         signOut(auth)
+        closeNavbar()
+        window.location.href = '/'
     }
 </script>
 <nav class="absolute z-20 bg-green-400 w-1/4 h-[100vh] px-4 py-2 text-white">
