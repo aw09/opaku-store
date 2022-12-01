@@ -1,7 +1,7 @@
 import { initializeApp, getApp } from "firebase/app";
 import { getAuth, GoogleAuthProvider } from "firebase/auth";
 import { getAnalytics } from "firebase/analytics";
-import { getFirestore } from 'firebase/firestore/lite';
+import { getDatabase } from "firebase/database";
 // import {
 //     API_KEY, AUTH_DOMAIN, PROJECT_ID, STORAGE_BUCKET,
 //     SENDER_ID, APP_ID, MESUREMENT_ID
@@ -14,7 +14,8 @@ const firebaseConfig = {
     storageBucket: "opaku-1b923.appspot.com",
     messagingSenderId: "257332122135",
     appId: "1:257332122135:web:bb4acdb522cea5da53c252",
-    measurementId: "G-Z53H78Q4JV"
+    measurementId: "G-Z53H78Q4JV",
+    databaseURL: "https://opaku-1b923-default-rtdb.asia-southeast1.firebasedatabase.app/"
 };
 
 // Initialize Firebase
@@ -23,5 +24,5 @@ const app = initializeApp(firebaseConfig);
 // export const analytics = getAnalytics(app);
 export const auth = getAuth(app);
 export const googleProvider = new GoogleAuthProvider();
-export const db = getFirestore(app);
+export const database = getDatabase(app);
 
