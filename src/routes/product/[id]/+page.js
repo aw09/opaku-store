@@ -6,5 +6,8 @@ import { database } from '../../../firebase';
 export async function load({ params }) {
     const id = params.id;
     const refDb = ref(database, 'products/' + id);
-    return (await get(refDb)).val();
+    return {
+        'id': id,
+        'content': (await get(refDb)).val()
+    };
 }
