@@ -13,31 +13,31 @@
 	});
 </script>
 
-<div class="app">
+<div class="app min-h-[100vh] flex flex-col">
 	<Header />
 	{#if showNavbar}
 		<Navbar />
 	{/if}
 
-	<main>
+	<main class="flex flex-col grow pt-10 px-4 max-w-3xl mx-auto w-full">
 		<slot />
 	</main>
 
-	<footer>
+	<!-- <footer>
 		<p>Opaku Store</p>
 		<p>By <span>Agung Wicaksono</span></p>
 		<a target="_blank" rel="noopener noreferrer" href="https://github.com/aw09">Github</a>
-	</footer>
+	</footer> -->
 </div>
 
 <style>
-	.app {
+	/* .app {
 		display: flex;
 		flex-direction: column;
 		min-height: 100vh;
-	}
+	} */
 
-	main {
+	/* main {
 		flex: 1;
 		display: flex;
 		flex-direction: column;
@@ -47,7 +47,7 @@
 		margin: 0 auto;
 		box-sizing: border-box;
 		margin: auto;
-	}
+	} */
 
 	footer {
 		display: flex;

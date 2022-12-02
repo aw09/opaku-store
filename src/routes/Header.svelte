@@ -20,7 +20,7 @@
   <h1 class="font-bold">Opaku Store</h1>
   <div class="grow"></div>
   {#if userData}
-    <button class="w-8 h-8"><FaShoppingCart/></button>
+    <a href="/cart" class="w-8 h-8"><FaShoppingCart/></a>
   {/if}
 </div>
 <div class="h-10"></div>

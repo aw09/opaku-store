@@ -27,7 +27,7 @@
         <CampaignCard />
     </div>
 </section>
-<section class="item-container grid grid-cols-3 gap-2 py-2">
+<section class="item-container grid gap-2 py-2 md:grid-cols-3 grid-cols-2">
     {#each dataProduct as product, index}
         {#if product }
             <ItemCard {...product} id={index} />
