@@ -3,11 +3,25 @@
     import IoIosRemoveCircleOutline from 'svelte-icons/io/IoIosRemoveCircleOutline.svelte'
     import IoIosAddCircleOutline from 'svelte-icons/io/IoIosAddCircleOutline.svelte'
     import { ref, set, remove } from "firebase/database";
-    import { database } from '$firebase';
     import { user } from '$state';
+    import { getAnalytics, logEvent } from "firebase/analytics";
+    import { onMount } from 'svelte';
+    import { app, database } from '$firebase';
+    
     export let data;
+    let analytics;
     let userData;
     let refDb;
+
+    const itemLog = {
+        currency: 'IDR',
+        value: data.quantity * data.price,
+        items: [data]
+    };
+
+    onMount(() => {
+        analytics = getAnalytics(app)
+    });
 
     user.subscribe(value => {
 		userData = value;
@@ -17,14 +31,19 @@
     const increase = () => {
         data.quantity++;
         set(refDb, data);
+        logEvent(analytics, 'add_to_cart', itemLog)
     }
 
     const decrease = () => {
-        if (data.quantity == 1) 
+        if (data.quantity == 1) {
+            logEvent(analytics, 'remove_from_cart', itemLog);
             return remove(refDb)
+        }
+
 
         data.quantity--;
         set(refDb, data);
+        logEvent(analytics, 'add_to_cart', itemLog);
     }
 
 

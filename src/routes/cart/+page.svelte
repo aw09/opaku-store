@@ -23,6 +23,7 @@
         let firstRender = true;
         onValue(refDb, (snapshot) => {
             updateData(snapshot, tempData, firstRender)
+            firstRender = false
         })
         onChildRemoved(refDb, (snapshot) => {
             updateData(snapshot, tempData)
@@ -53,7 +54,6 @@
                 items: cartData
             }
             logEvent(analytics, 'view_cart', viewCartLog);
-            firstRender=false;
         }
     }
     
