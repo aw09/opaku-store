@@ -14,18 +14,18 @@
 		navbar.update(n => true);
 	}
 
-  const openCart = () => {
+  const href = path => {
     navbar.update(n => false);
-    window.location.href = '/cart'
+    window.location.href = path
   }
 </script>
 
 <div class="bg-green-400 py-2 px-4 flex gap-2 items-center text-white fixed top-0 left-0 right-0 z-10">
   <button on:click={openNavbar} class="w-10 h-10"><IoIosMenu /></button>
-  <h1 class="font-bold">Opaku Store</h1>
+  <button on:click={ () => href('/') } class="font-bold">Opaku Store</button>
   <div class="grow"></div>
   {#if userData}
-    <button on:click={openCart} class="w-8 h-8"><FaShoppingCart/></button>
+    <button on:click={ () => href('/cart') } class="w-8 h-8"><FaShoppingCart/></button>
   {/if}
 </div>
 <div class="h-10"></div>

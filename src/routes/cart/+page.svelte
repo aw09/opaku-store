@@ -2,26 +2,34 @@
 // @ts-nocheck
 
     import { ref, onValue, onChildRemoved } from "firebase/database";
-    import { database } from '../../firebase';
+    import { app, database } from '../../firebase';
     import { user } from '../state'
     import ItemCart from "$components/ItemCart.svelte";
+    import { getAnalytics, logEvent } from "firebase/analytics";
+    import { onMount } from 'svelte';
 
     let userData;
     let cartData = [];
     let total = 0;
+    let analytics;
+
+    onMount(() => {
+        analytics = getAnalytics(app)
+    });
     
     const loadData = () => {
         const refDb = ref(database, 'cart/' + userData.uid);
         let tempData = [];
+        let firstRender = true;
         onValue(refDb, (snapshot) => {
-            updateData(snapshot, tempData)
+            updateData(snapshot, tempData, firstRender)
         })
         onChildRemoved(refDb, (snapshot) => {
             updateData(snapshot, tempData)
         })
     }
 
-    const updateData = (snapshot, tempData) => {
+    const updateData = (snapshot, tempData, firstRender) => {
         const data = snapshot.val();
         if (!Array.isArray(data)){
             for(let key in data){
@@ -32,9 +40,21 @@
             tempData = data
         }
         cartData = tempData.filter((d) => d);
+
         total = cartData.reduce((tempTotal, data) => {
             return tempTotal + data.quantity * data.price;
         }, 0)
+
+        // Log
+        if(firstRender){
+            const viewCartLog = {
+                currency: 'IDR',
+                value: total,
+                items: cartData
+            }
+            logEvent(analytics, 'view_cart', viewCartLog);
+            firstRender=false;
+        }
     }
     
     user.subscribe(value => {

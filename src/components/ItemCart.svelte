@@ -12,7 +12,6 @@
     user.subscribe(value => {
 		userData = value;
         refDb = ref(database, 'cart/' + userData.uid + '/' + data.item_id)
-        console.log('cart/' + userData.uid + data.item_id);
 	});
 
     const increase = () => {

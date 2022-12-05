@@ -34,13 +34,13 @@
         });
     }
 </script>
-<div>
-    <form class="flex flex-col" action="">
+<div class="flex justify-center">
+    <!-- <form class="flex flex-col" action="">
         <label for="email">Email</label>
         <input id="email" type="text" placeholder="Your email here">
         <label for="password" type="password" >Password</label>
         <input id="password" type="password" placeholder="Your password here">
         <button type="submit" class="rounded-sm bg-gray-400 w-min">Login</button>
-    </form>
+    </form> -->
     <button on:click={loginWithGoogle} class="p-2 border-2 border-gray-200 rounded-lg" ><img class="inline-block" src="/icon/google.png" alt="google"> Login with Google</button>
 </div>
