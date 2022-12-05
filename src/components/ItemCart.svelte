@@ -2,7 +2,7 @@
 // @ts-nocheck
     import IoIosRemoveCircleOutline from 'svelte-icons/io/IoIosRemoveCircleOutline.svelte'
     import IoIosAddCircleOutline from 'svelte-icons/io/IoIosAddCircleOutline.svelte'
-    import { ref, set, get } from "firebase/database";
+    import { ref, set, remove } from "firebase/database";
     import { database } from '$firebase';
     import { user } from '$state';
     export let data;
@@ -21,6 +21,9 @@
     }
 
     const decrease = () => {
+        if (data.quantity == 1) 
+            return remove(refDb)
+
         data.quantity--;
         set(refDb, data);
     }
@@ -35,9 +38,9 @@
         <p>Rp {data.price.toLocaleString()}</p>
     </div>
     <div>
-        <div id="quantity-control" class="flex items-center">
+        <div id="quantity-control" class="flex items-center w-20 md:w-24">
             <button on:click={decrease} class="w-5"><IoIosRemoveCircleOutline/></button>
-            <p class="px-3">{data.quantity}</p>
+            <p class="mx-auto">{data.quantity}</p>
             <button on:click={increase} class="w-5"><IoIosAddCircleOutline/></button>
         </div>
     </div>

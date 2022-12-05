@@ -13,6 +13,11 @@
   const openNavbar = () =>  {
 		navbar.update(n => true);
 	}
+
+  const openCart = () => {
+    navbar.update(n => false);
+    window.location.href = '/cart'
+  }
 </script>
 
 <div class="bg-green-400 py-2 px-4 flex gap-2 items-center text-white fixed top-0 left-0 right-0 z-10">
@@ -20,7 +25,7 @@
   <h1 class="font-bold">Opaku Store</h1>
   <div class="grow"></div>
   {#if userData}
-    <a href="/cart" class="w-8 h-8"><FaShoppingCart/></a>
+    <button on:click={openCart} class="w-8 h-8"><FaShoppingCart/></button>
   {/if}
 </div>
 <div class="h-10"></div>
