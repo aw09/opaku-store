@@ -24,7 +24,7 @@
                 email: user.email
             });
 
-            window.location.href = base;
+            window.location.href = base ? base : "/";
         }).catch((error) => {
             // Handle Errors here.
             const errorCode = error.code;

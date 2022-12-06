@@ -6,7 +6,7 @@
     export let price;
 
     const handleClick = id => {
-        window.location.href = '/product/'+id;
+        window.location.href = 'product?id='+id;
     }
 </script>
 <!-- svelte-ignore a11y-click-events-have-key-events -->

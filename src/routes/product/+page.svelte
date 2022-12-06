@@ -6,33 +6,54 @@
   import { app, database } from '$firebase';
   import { ref, get, set } from "firebase/database";
   import { user } from '$state';
+  import { page } from '$app/stores';
     
-  /** @type {import('./$types').PageData} */
-  export let data;
 
+
+  const id = $page.url.searchParams.get('id');
   let analytics;
   let userData;
+  let product;
+  let quantityProduct;
+  let data;
+
+  const fetchData = async () => {
+    const refDb = ref(database, 'products/' + id);
+    const result = (await get(refDb)).val()
+    if(result) {
+      initAnalytics()
+      return result
+    }
+    else throw new Error("Product Not Found");
+  }
+  
+  
+  let promise = fetchData();
+
   user.subscribe(value => {
       userData = value;
   });
 
-  const product = {
-    item_id: data.id,
-    item_name: data.content.name,
-    price: data.content.price
-  }
-  const quantityProduct = {...product, quantity: 1}
 
-  onMount(() => {
+  const initAnalytics = async () => {
     analytics = getAnalytics(app)
+    data = await promise
+
+    product = {
+      item_id: id,
+      item_name: data.name,
+      price: data.price
+    }
+    quantityProduct = {...product, quantity: 1}
+    console.log(quantityProduct);
     logEvent(analytics, 'select_item', product);
-  });
+  }
+
 
   const addToCart = () => {
-    if (!userData) window.location.href = '/login'
+    if (!userData) window.location.href = 'login'
 
-
-    const cartProduct = {...quantityProduct, image: data.content.image}
+    const cartProduct = {...quantityProduct, image: data.image}
     const refDb = ref(database, 'cart/' + userData.uid + '/' + quantityProduct.item_id)
     get(refDb).then((snapshot) => {
       const data = snapshot.val();
@@ -55,15 +76,21 @@
 
 </script>
 
+{#await promise}
+<span>Loading data...</span>
+{:then data}
 <div class="flex py-4 gap-4">
-    <img class="h-48 w-48" src={data.content.image} alt='{data.content.name}-image'>
+    <img class="h-48 w-48" src={data.image} alt='{data.name}-image'>
     <div class="flex flex-col">
-        <h1 class="font-bold text-xl text-black">{data.content.name}</h1>
-        <p class="text-2xl">Rp {data.content.price.toLocaleString()}</p>
+        <h1 class="font-bold text-xl text-black">{data.name}</h1>
+        <p class="text-2xl">Rp {data.price.toLocaleString()}</p>
         <button 
           on:click={addToCart} 
           disabled={!userData} 
           class="mt-4 py-2 w-full rounded-lg  text-center font-bold {userData ? 'text-white bg-green-400': 'text-gray-500 bg-gray-200'}"
         >{userData ? 'Add to Cart' : 'Login first'}</button>
     </div>
-</div>
+  </div>
+{:catch error}
+	<h2 class="mx-auto text-xl">{error.message}</h2>
+{/await}

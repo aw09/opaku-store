@@ -17,13 +17,14 @@
 
     const handleHref = path => {
         closeNavbar()
+        if(path === "") path = '/'
         window.location.href = path
     }
 
     const logout = () => {
         signOut(auth)
         closeNavbar()
-        window.location.href = '/'
+        window.location.href = base ? base : "/";
     }
 </script>
 <nav class="absolute z-20 bg-green-400 w-1/4 h-[100vh] px-4 py-2 text-white">

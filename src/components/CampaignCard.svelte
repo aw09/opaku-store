@@ -5,7 +5,7 @@
     export let thumbnail;
 
     const handleClick = () => {
-        window.location.href = '/campaign/'+id;
+        window.location.href = 'campaign/'+id;
     }
 </script>
 
