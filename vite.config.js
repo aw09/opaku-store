@@ -8,7 +8,7 @@ const config = {
 	plugins: [sveltekit()],
 	resolve: {
 		alias: {
-			$base: prod ? '/opaku-store' : '',
+			$base: prod ? '/opaku-store/' : '/',
 			$src: path.resolve('./src'),
 			$routes: path.resolve('./src/routes'),
 			$components: path.resolve('./src/components'),
