@@ -1,0 +1,1 @@
+import{r as o,g as r,d as n}from"./firebase-c0b386ca.js";async function s({params:e}){const t=e.id,a=o(n,"products/"+t);return{id:t,content:(await r(a)).val()}}const d=Object.freeze(Object.defineProperty({__proto__:null,load:s},Symbol.toStringTag,{value:"Module"}));export{d as _,s as l};
