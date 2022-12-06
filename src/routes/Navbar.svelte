@@ -17,8 +17,7 @@
 
     const handleHref = path => {
         closeNavbar()
-        if(path === "") path = '/'
-        window.location.href = path
+        window.location.href = base + '/' +path
     }
 
     const logout = () => {
@@ -31,12 +30,12 @@
     <div class="w-full text-right">
         <button on:click={closeNavbar} class="w-10 h-10"><IoIosClose/></button>
     </div>
-    <ul class="px-2">
-        <li on:click={() => handleHref(base)}>Home</li>
+    <ul class="px-2 flex flex-col gap-2 text-xl">
+        <li class="cursor-pointer" on:click={() => handleHref(base)}>Home</li>
         {#if userData}
-            <li on:click={logout}>Logout</li>
+            <li class="cursor-pointer" on:click={logout}>Logout</li>
         {:else}
-            <li on:click={() => handleHref('/login')}>Login</li>
+            <li class="cursor-pointer" on:click={() => handleHref('login')}>Login</li>
         {/if}
     </ul>
 </nav>

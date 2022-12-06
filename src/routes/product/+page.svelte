@@ -7,6 +7,8 @@
   import { ref, get, set } from "firebase/database";
   import { user } from '$state';
   import { page } from '$app/stores';
+  import { base } from '$app/paths';
+
     
 
 
@@ -51,7 +53,7 @@
 
 
   const addToCart = () => {
-    if (!userData) window.location.href = 'login'
+    if (!userData) window.location.href = base+'/login'
 
     const cartProduct = {...quantityProduct, image: data.image}
     const refDb = ref(database, 'cart/' + userData.uid + '/' + quantityProduct.item_id)

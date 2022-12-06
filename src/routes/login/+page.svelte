@@ -37,7 +37,7 @@
         });
     }
 </script>
-<div class="flex justify-center">
+<div class="flex justify-center pt-10">
     <!-- <form class="flex flex-col" action="">
         <label for="email">Email</label>
         <input id="email" type="text" placeholder="Your email here">
@@ -45,5 +45,5 @@
         <input id="password" type="password" placeholder="Your password here">
         <button type="submit" class="rounded-sm bg-gray-400 w-min">Login</button>
     </form> -->
-    <button on:click={loginWithGoogle} class="p-2 border-2 border-gray-200 rounded-lg" ><img class="inline-block" src="/icon/google.png" alt="google"> Login with Google</button>
+    <button on:click={loginWithGoogle} class="p-2 border-2 border-gray-200 rounded-lg text-xl" ><img class="inline-block pr-2" src="{base}/icon/google.png" alt="google"> Login with Google</button>
 </div>

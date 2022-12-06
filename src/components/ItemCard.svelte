@@ -1,12 +1,14 @@
 <script>
 // @ts-nocheck
+    import { base } from '$app/paths';
+
     export let id;
     export let name;
     export let image;
     export let price;
 
     const handleClick = id => {
-        window.location.href = 'product?id='+id;
+        window.location.href = base+'/product?id='+id;
     }
 </script>
 <!-- svelte-ignore a11y-click-events-have-key-events -->

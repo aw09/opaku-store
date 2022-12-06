@@ -4,6 +4,7 @@
   import { ref, get, set } from "firebase/database";
   import { getAnalytics, logEvent } from "firebase/analytics";
   import { app, database } from '$firebase';
+  import { base } from '$app/paths';
   import { page } from '$app/stores';
   
   const id = $page.url.searchParams.get('id');
@@ -49,7 +50,7 @@
 
   const handleCta = () => {
     logEvent(analytics, 'select_promotion', promotionLog);
-    window.location.href = 'product?id='+campaign?.product_id
+    window.location.href = base + '/product?id='+campaign?.product_id
   }
 </script>
 

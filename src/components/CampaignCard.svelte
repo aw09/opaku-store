@@ -1,11 +1,13 @@
 <script>
 // @ts-nocheck
+    import { base } from '$app/paths';
+
     export let id;
     export let name;
     export let thumbnail;
 
     const handleClick = () => {
-        window.location.href = 'campaign/'+id;
+        window.location.href = base+'/campaign?id='+id;
     }
 </script>
 
