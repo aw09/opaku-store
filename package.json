@@ -1,7 +1,8 @@
 {
 	"name": "opaku-store",
-	"version": "0.0.1",
-	"private": true,
+	"version": "1.0.0",
+	"private": false,
+	"homepage": "http://aw09.github.io/opaku-store/",
 	"scripts": {
 		"dev": "vite dev",
 		"build": "vite build",
