@@ -1,7 +1,5 @@
 <script>
 // @ts-nocheck
-	export const prerender = true;
-
 	import Header from './Header.svelte';
 	import Navbar from './Navbar.svelte';
 	import '../styles.css';
