@@ -1,7 +1,10 @@
 <script>
+    // @ts-nocheck
     import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
-    import { app, auth, googleProvider} from '../../firebase';
+    import { app, auth, googleProvider} from '$firebase';
     import { getAnalytics, setUserProperties } from "firebase/analytics";
+    import { base } from "$app/paths";
+
 
     
     // function loginWithGoogle() {
@@ -21,7 +24,7 @@
                 email: user.email
             });
 
-            window.location.href = '/';
+            window.location.href = base;
         }).catch((error) => {
             // Handle Errors here.
             const errorCode = error.code;

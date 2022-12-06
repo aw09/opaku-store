@@ -4,6 +4,7 @@
     import { signOut } from "firebase/auth";
     import { auth } from '../firebase';
     import { user, navbar } from './state';
+    import { base } from "$app/paths";
     
     let userData;
     user.subscribe(value => {
@@ -30,7 +31,7 @@
         <button on:click={closeNavbar} class="w-10 h-10"><IoIosClose/></button>
     </div>
     <ul class="px-2">
-        <li on:click={() => handleHref('/')}>Home</li>
+        <li on:click={() => handleHref(base)}>Home</li>
         {#if userData}
             <li on:click={logout}>Logout</li>
         {:else}
