@@ -1,24 +1,21 @@
-name: Build and Deploy
+name: Deploy Sveltekit to GitHub Pages
 
 on:
   push:
     branches: [ master ]
 
 jobs:
-  build:
+  build-and-deploy:
     runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v2
-    - name: Build app
-      run: svelte-kit build
 
-  deploy:
-    runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-    - name: Deploy app
-      uses: JamesIves/github-pages-deploy-action@releases/v3
+    - name: Install dependencies
+      run: npm install
+    - name: Build project for production
+      run: npx vite build
+    - name: Deploy to GitHub Pages
+      uses: peaceiris/actions-gh-pages@v3
       with:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        BRANCH: gh-pages
-        FOLDER: build
+        github_token: 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
+        publish_dir: ./dist
