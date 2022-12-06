@@ -1,6 +1,6 @@
 {
   "node_modules/@sveltejs/kit/src/runtime/client/start.js": {
-    "file": "_app/immutable/start-1e7b3cfa.js",
+    "file": "_app/immutable/start-c43b5e04.js",
     "src": "node_modules/@sveltejs/kit/src/runtime/client/start.js",
     "isEntry": true,
     "imports": [
@@ -19,7 +19,7 @@
     ]
   },
   "src/routes/+layout.svelte": {
-    "file": "_app/immutable/components/pages/_layout.svelte-eda0bef2.js",
+    "file": "_app/immutable/components/pages/_layout.svelte-0f9036cb.js",
     "src": "src/routes/+layout.svelte",
     "isEntry": true,
     "imports": [
@@ -91,22 +91,30 @@
       "_state-cc95885c.js"
     ]
   },
+  "src/routes/+layout.js": {
+    "file": "_app/immutable/modules/pages/_layout.js-7b9cbfbc.js",
+    "src": "src/routes/+layout.js",
+    "isEntry": true,
+    "imports": [
+      "__layout-8d2a742b.js"
+    ]
+  },
   "src/routes/campaign/[id]/+page.js": {
-    "file": "_app/immutable/modules/pages/campaign/_id_/_page.js-c59a2489.js",
+    "file": "_app/immutable/modules/pages/campaign/_id_/_page.js-0fba86c7.js",
     "src": "src/routes/campaign/[id]/+page.js",
     "isEntry": true,
     "imports": [
       "_firebase-c0b386ca.js",
-      "__page-a98ed72c.js"
+      "__page-a66e7009.js"
     ]
   },
   "src/routes/product/[id]/+page.js": {
-    "file": "_app/immutable/modules/pages/product/_id_/_page.js-3b404177.js",
+    "file": "_app/immutable/modules/pages/product/_id_/_page.js-47ed2101.js",
     "src": "src/routes/product/[id]/+page.js",
     "isEntry": true,
     "imports": [
       "_firebase-c0b386ca.js",
-      "__page-85cb88db.js"
+      "__page-bcca2da7.js"
     ]
   },
   "_singletons-a8a4f23d.js": {
@@ -147,23 +155,27 @@
       "_app/immutable/assets/IconBase-d93538e2.css"
     ]
   },
-  "__page-a98ed72c.js": {
-    "file": "_app/immutable/chunks/_page-a98ed72c.js",
+  "__layout-8d2a742b.js": {
+    "file": "_app/immutable/chunks/_layout-8d2a742b.js"
+  },
+  "__page-a66e7009.js": {
+    "file": "_app/immutable/chunks/_page-a66e7009.js",
     "imports": [
       "_firebase-c0b386ca.js"
     ]
   },
-  "__page-85cb88db.js": {
-    "file": "_app/immutable/chunks/_page-85cb88db.js",
+  "__page-bcca2da7.js": {
+    "file": "_app/immutable/chunks/_page-bcca2da7.js",
     "imports": [
       "_firebase-c0b386ca.js"
     ]
   },
   ".svelte-kit/generated/nodes/0.js": {
-    "file": "_app/immutable/chunks/0-a0e298b5.js",
+    "file": "_app/immutable/chunks/0-5b1875c3.js",
     "src": ".svelte-kit/generated/nodes/0.js",
     "isDynamicEntry": true,
     "imports": [
+      "__layout-8d2a742b.js",
       "src/routes/+layout.svelte"
     ]
   },
@@ -184,11 +196,11 @@
     ]
   },
   ".svelte-kit/generated/nodes/3.js": {
-    "file": "_app/immutable/chunks/3-9eaf4b68.js",
+    "file": "_app/immutable/chunks/3-88e1e74a.js",
     "src": ".svelte-kit/generated/nodes/3.js",
     "isDynamicEntry": true,
     "imports": [
-      "__page-a98ed72c.js",
+      "__page-a66e7009.js",
       "src/routes/campaign/[id]/+page.svelte"
     ]
   },
@@ -209,11 +221,11 @@
     ]
   },
   ".svelte-kit/generated/nodes/6.js": {
-    "file": "_app/immutable/chunks/6-34791ee6.js",
+    "file": "_app/immutable/chunks/6-08604483.js",
     "src": ".svelte-kit/generated/nodes/6.js",
     "isDynamicEntry": true,
     "imports": [
-      "__page-85cb88db.js",
+      "__page-bcca2da7.js",
       "src/routes/product/[id]/+page.svelte"
     ]
   },
