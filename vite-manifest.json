@@ -1,6 +1,6 @@
 {
   "node_modules/@sveltejs/kit/src/runtime/client/start.js": {
-    "file": "_app/immutable/start-c43b5e04.js",
+    "file": "_app/immutable/start-099a9585.js",
     "src": "node_modules/@sveltejs/kit/src/runtime/client/start.js",
     "isEntry": true,
     "imports": [
@@ -100,21 +100,21 @@
     ]
   },
   "src/routes/campaign/[id]/+page.js": {
-    "file": "_app/immutable/modules/pages/campaign/_id_/_page.js-0fba86c7.js",
+    "file": "_app/immutable/modules/pages/campaign/_id_/_page.js-7eb03849.js",
     "src": "src/routes/campaign/[id]/+page.js",
     "isEntry": true,
     "imports": [
       "_firebase-c0b386ca.js",
-      "__page-a66e7009.js"
+      "__page-72e1e699.js"
     ]
   },
   "src/routes/product/[id]/+page.js": {
-    "file": "_app/immutable/modules/pages/product/_id_/_page.js-47ed2101.js",
+    "file": "_app/immutable/modules/pages/product/_id_/_page.js-dfe311a4.js",
     "src": "src/routes/product/[id]/+page.js",
     "isEntry": true,
     "imports": [
       "_firebase-c0b386ca.js",
-      "__page-bcca2da7.js"
+      "__page-8e3b1a35.js"
     ]
   },
   "_singletons-a8a4f23d.js": {
@@ -158,14 +158,14 @@
   "__layout-8d2a742b.js": {
     "file": "_app/immutable/chunks/_layout-8d2a742b.js"
   },
-  "__page-a66e7009.js": {
-    "file": "_app/immutable/chunks/_page-a66e7009.js",
+  "__page-72e1e699.js": {
+    "file": "_app/immutable/chunks/_page-72e1e699.js",
     "imports": [
       "_firebase-c0b386ca.js"
     ]
   },
-  "__page-bcca2da7.js": {
-    "file": "_app/immutable/chunks/_page-bcca2da7.js",
+  "__page-8e3b1a35.js": {
+    "file": "_app/immutable/chunks/_page-8e3b1a35.js",
     "imports": [
       "_firebase-c0b386ca.js"
     ]
@@ -196,11 +196,11 @@
     ]
   },
   ".svelte-kit/generated/nodes/3.js": {
-    "file": "_app/immutable/chunks/3-88e1e74a.js",
+    "file": "_app/immutable/chunks/3-53c5a6f9.js",
     "src": ".svelte-kit/generated/nodes/3.js",
     "isDynamicEntry": true,
     "imports": [
-      "__page-a66e7009.js",
+      "__page-72e1e699.js",
       "src/routes/campaign/[id]/+page.svelte"
     ]
   },
@@ -221,11 +221,11 @@
     ]
   },
   ".svelte-kit/generated/nodes/6.js": {
-    "file": "_app/immutable/chunks/6-08604483.js",
+    "file": "_app/immutable/chunks/6-0de8f2d6.js",
     "src": ".svelte-kit/generated/nodes/6.js",
     "isDynamicEntry": true,
     "imports": [
-      "__page-bcca2da7.js",
+      "__page-8e3b1a35.js",
       "src/routes/product/[id]/+page.svelte"
     ]
   },
