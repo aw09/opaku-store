@@ -7,17 +7,13 @@
 	import { setSnackbar } from "../state";
 	import { onMount } from "svelte";
 
-    onMount(() => {
-        analytics = getAnalytics(app)
-    });
-
     
     const loginWithGoogle = () => {
         signInWithPopup(auth, googleProvider)
         .then((result) => {
             // This gives you a Google Access Token. You can use it to access the Google API.
-            const credential = GoogleAuthProvider.credentialFromResult(result);
-            const token = credential?.accessToken;
+            // const credential = GoogleAuthProvider.credentialFromResult(result);
+            // const token = credential?.accessToken;
             const analytics = getAnalytics(app);
 
             // The signed-in user info.

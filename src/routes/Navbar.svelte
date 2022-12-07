@@ -2,7 +2,7 @@
 // @ts-nocheck
     import IoIosClose from 'svelte-icons/io/IoIosClose.svelte'
     import { signOut } from "firebase/auth";
-    import { auth } from '../firebase';
+    import { app, auth } from '$firebase';
     import { user, navbar } from './state';
     import { base } from "$app/paths";
 	import { onMount } from 'svelte';
@@ -10,13 +10,9 @@
 
     
     let userData;
-    let analytics;
 
     user.subscribe(value => {
         userData = value;
-    });
-    onMount(() => {
-        analytics = getAnalytics(app)
     });
 
     const closeNavbar = () =>  {
@@ -29,12 +25,14 @@
     }
 
     const logout = () => {
-        signOut(auth)
-        closeNavbar()
+        const analytics = getAnalytics(app)
         setUserProperties(analytics, { 
             email: ""
         });
         logEvent(analytics, 'logout')
+        signOut(auth)
+        closeNavbar()
+
         window.location.href = base ? base : "/";
     }
 </script>
