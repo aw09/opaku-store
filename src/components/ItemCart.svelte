@@ -7,6 +7,7 @@
     import { getAnalytics, logEvent } from "firebase/analytics";
     import { onMount } from 'svelte';
     import { app, database } from '$firebase';
+	import { setSnackbar } from '$state';
     
     export let data;
     let analytics;
@@ -39,6 +40,7 @@
         logEvent(analytics, 'remove_from_cart', itemLog);
         
         if (data.quantity == 0) {
+            setSnackbar("You have removed this item from your cart")
             return remove(refDb)
         }
         set(refDb, data);

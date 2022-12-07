@@ -3,13 +3,12 @@
 
     import { ref, onValue, onChildRemoved, remove, onDisconnect } from "firebase/database";
     import { app, database } from '$firebase';
-    import { user } from '../state'
+    import { user, setSnackbar } from '../state'
     import ItemCart from "$components/ItemCart.svelte";
     import { getAnalytics, logEvent } from "firebase/analytics";
     import { onMount } from 'svelte';
 
     let userData;
-    let tempData = [];
     let cartData = [];
     let total = 0;
     let analytics;
@@ -46,7 +45,7 @@
             updateData(snapshot)
         });
         // Show modal checkout
-        // 
+        setSnackbar("You have already checked out")
     }
 
     const updateData = (snapshot, firstRender = false) => {
@@ -72,11 +71,6 @@
             value: total,
             items: cartData
         }
-
-        // Log
-        // if(firstRender){
-        //     logEvent(analytics, 'view_cart', viewCartLog);
-        // }
     }
 
     user.subscribe(value => {

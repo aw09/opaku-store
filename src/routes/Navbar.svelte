@@ -35,7 +35,7 @@
         {#if userData}
             <li class="cursor-pointer" on:click={logout}>Logout</li>
         {:else}
-            <li class="cursor-pointer" on:click={() => handleHref('login')}>Login</li>
+            <li class="cursor-pointer" on:click={() => handleHref('/login')}>Login</li>
         {/if}
     </ul>
 </nav>

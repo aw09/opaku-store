@@ -5,6 +5,7 @@ import { auth } from '../firebase';
 
 export const navbar = writable(false)
 export const user = writable(null)
+export const snackbar = writable({state: false, message: ""})
 
 onAuthStateChanged(auth, (userData) => {
     if (userData) {
@@ -13,3 +14,14 @@ onAuthStateChanged(auth, (userData) => {
         user.update(n => null);
     }
 });
+
+export const setSnackbar = message => {
+    snackbar.set({
+        state: true,
+        message: message
+    })
+}
+
+export const resetSnackbar = () => {
+    snackbar.set({ state: false, message: "" })
+}

@@ -4,6 +4,7 @@
     import { app, auth, googleProvider} from '$firebase';
     import { getAnalytics, setUserProperties } from "firebase/analytics";
     import { base } from "$app/paths";
+	import { setSnackbar } from "../state";
 
 
     
@@ -24,6 +25,7 @@
                 email: user.email
             });
 
+            // setSnackbar("You have logged in")
             window.location.href = base ? base : "/";
         }).catch((error) => {
             // Handle Errors here.

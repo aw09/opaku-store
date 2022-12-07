@@ -5,6 +5,13 @@
     import CampaignCard from "../components/CampaignCard.svelte";
     import { ref, get } from "firebase/database";
     import {database} from '../firebase';
+    import {user} from './state';
+
+    let userData;
+    user.subscribe(value => {
+        userData = value;
+    })
+
 
     let dataCampaign = [];
     const getCampaign = async () => {

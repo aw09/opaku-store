@@ -2,13 +2,12 @@
 // @ts-nocheck
 
   import { getAnalytics, logEvent } from "firebase/analytics";
-  import { onMount } from 'svelte';
   import { app, database } from '$firebase';
   import { ref, get, set } from "firebase/database";
   import { user } from '$state';
   import { page } from '$app/stores';
   import { base } from '$app/paths';
-
+	import { setSnackbar } from '$state';
     
 
 
@@ -60,9 +59,11 @@
       const data = snapshot.val();
       if (!data){
         set(refDb, cartProduct)
+        setSnackbar("Item added to cart")
         logAddToCart()
       }
       // Show modal item is already in cart
+      setSnackbar("This item is already in the cart")
     })
   }
 
@@ -74,6 +75,8 @@
     }
     logEvent(analytics, 'add_to_cart', productLog)
   }
+
+  
 
 </script>
 
