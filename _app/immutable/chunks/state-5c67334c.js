@@ -1,0 +1,1 @@
+import{w as a}from"./index-dc88078b.js";import{o as r,c as o}from"./firebase-dc3cb49a.js";const u=a(!1),e=a(null),t=a({state:!1,message:""});r(o,s=>{s?e.update(n=>s):e.update(n=>null)});const m=s=>{t.set({state:!0,message:s})},f=()=>{t.set({state:!1,message:""})};export{m as a,u as n,f as r,t as s,e as u};
