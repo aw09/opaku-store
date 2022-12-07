@@ -13,7 +13,7 @@
     let userData;
     let refDb;
 
-    const itemLog = {
+    $: itemLog = {
         currency: 'IDR',
         value: data.quantity * data.price,
         items: [data]
@@ -35,15 +35,13 @@
     }
 
     const decrease = () => {
-        if (data.quantity == 1) {
-            logEvent(analytics, 'remove_from_cart', itemLog);
+        data.quantity--;
+        logEvent(analytics, 'remove_from_cart', itemLog);
+        
+        if (data.quantity == 0) {
             return remove(refDb)
         }
-
-
-        data.quantity--;
         set(refDb, data);
-        logEvent(analytics, 'add_to_cart', itemLog);
     }
 
 

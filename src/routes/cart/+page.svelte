@@ -1,37 +1,58 @@
 <script>
 // @ts-nocheck
 
-    import { ref, onValue, onChildRemoved } from "firebase/database";
-    import { app, database } from '../../firebase';
+    import { ref, onValue, onChildRemoved, remove, onDisconnect } from "firebase/database";
+    import { app, database } from '$firebase';
     import { user } from '../state'
     import ItemCart from "$components/ItemCart.svelte";
     import { getAnalytics, logEvent } from "firebase/analytics";
     import { onMount } from 'svelte';
 
     let userData;
+    let tempData = [];
     let cartData = [];
     let total = 0;
     let analytics;
+    let viewCartLog;
+    let refDb;
 
     onMount(() => {
         analytics = getAnalytics(app)
     });
-    
+
+
     const loadData = () => {
-        const refDb = ref(database, 'cart/' + userData.uid);
-        let tempData = [];
+        refDb = ref(database, 'cart/' + userData.uid);
+        
         let firstRender = true;
         onValue(refDb, (snapshot) => {
-            updateData(snapshot, tempData, firstRender)
+            updateData(snapshot, {firstRender: firstRender})
             firstRender = false
         })
         onChildRemoved(refDb, (snapshot) => {
-            updateData(snapshot, tempData)
+            updateData(snapshot)
         })
+        onDisconnect(refDb, (snapshot) => {
+            updateData(snapshot)
+        })
+        
+        logEvent(analytics, 'view_cart', viewCartLog);
     }
 
-    const updateData = (snapshot, tempData, firstRender) => {
-        const data = snapshot.val();
+    const checkout = () => {
+        logEvent(analytics, 'begin_checkout', viewCartLog);
+        remove(refDb).finally((snapshot) => {
+            console.log(snapshot)
+            updateData(snapshot)
+        });
+        // Show modal checkout
+        // 
+    }
+
+    const updateData = (snapshot, firstRender = false) => {
+        const data = snapshot?.val() || [];
+        let tempData = [];
+
         if (!Array.isArray(data)){
             for(let key in data){
                 tempData[key] = data[key]
@@ -46,21 +67,23 @@
             return tempTotal + data.quantity * data.price;
         }, 0)
 
-        // Log
-        if(firstRender){
-            const viewCartLog = {
-                currency: 'IDR',
-                value: total,
-                items: cartData
-            }
-            logEvent(analytics, 'view_cart', viewCartLog);
+        viewCartLog = {
+            currency: 'IDR',
+            value: total,
+            items: cartData
         }
+
+        // Log
+        // if(firstRender){
+        //     logEvent(analytics, 'view_cart', viewCartLog);
+        // }
     }
-    
+
     user.subscribe(value => {
         userData = value;
         if(userData) loadData()
     });
+
 
 
 </script>
@@ -78,7 +101,7 @@
         <p>Rp {total.toLocaleString()}</p>
     </div>
     <div class="w-full flex  justify-end mb-10">
-        <button class="text-xl bg-green-400 text-white font-bold px-4 py-2 rounded-lg">Checkout</button>
+        <button on:click={checkout} class="text-xl bg-green-400 text-white font-bold px-4 py-2 rounded-lg">Checkout</button>
     </div>
 </div>
 

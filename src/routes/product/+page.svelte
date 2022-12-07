@@ -47,7 +47,6 @@
       price: data.price
     }
     quantityProduct = {...product, quantity: 1}
-    console.log(quantityProduct);
     logEvent(analytics, 'select_item', product);
   }
 
