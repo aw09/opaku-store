@@ -79,10 +79,11 @@
         if(userData) loadData()
     });
 
-
-
 </script>
 
+<head>
+    <title>Cart</title>
+</head>
 
 <h1 class="text-2xl pb-6">Cart</h1>
 <div class="flex flex-col gap-2 w-full grow">

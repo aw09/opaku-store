@@ -82,6 +82,10 @@
 
 </script>
 
+<head>
+    <title>Product Detail</title>
+</head>
+
 {#await promise}
 <span>Loading data...</span>
 {:then data}

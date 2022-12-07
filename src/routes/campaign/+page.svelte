@@ -54,6 +54,10 @@
   }
 </script>
 
+<head>
+    <title>Campaign Detail</title>
+</head>
+
 {#await promise}
 <span>Loading data...</span>
 {:then data}
