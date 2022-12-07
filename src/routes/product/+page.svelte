@@ -62,8 +62,10 @@
         setSnackbar("Item added to cart")
         logAddToCart()
       }
-      // Show modal item is already in cart
-      setSnackbar("This item is already in the cart")
+      else{
+        // Show modal item is already in cart
+        setSnackbar("This item is already in the cart")
+      }
     })
   }
 

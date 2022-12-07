@@ -2,15 +2,16 @@
     // @ts-nocheck
     import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
     import { app, auth, googleProvider} from '$firebase';
-    import { getAnalytics, setUserProperties } from "firebase/analytics";
+    import { getAnalytics, setUserProperties, logEvent } from "firebase/analytics";
     import { base } from "$app/paths";
 	import { setSnackbar } from "../state";
+	import { onMount } from "svelte";
 
+    onMount(() => {
+        analytics = getAnalytics(app)
+    });
 
     
-    // function loginWithGoogle() {
-	// 	alert('clicked')
-	// }
     const loginWithGoogle = () => {
         signInWithPopup(auth, googleProvider)
         .then((result) => {
@@ -24,6 +25,8 @@
             setUserProperties(analytics, { 
                 email: user.email
             });
+            logEvent(analytics, 'login', {method: "google"});
+
 
             // setSnackbar("You have logged in")
             window.location.href = base ? base : "/";

@@ -5,10 +5,18 @@
     import { auth } from '../firebase';
     import { user, navbar } from './state';
     import { base } from "$app/paths";
+	import { onMount } from 'svelte';
+    import { getAnalytics, setUserProperties, logEvent } from "firebase/analytics";
+
     
     let userData;
+    let analytics;
+
     user.subscribe(value => {
         userData = value;
+    });
+    onMount(() => {
+        analytics = getAnalytics(app)
     });
 
     const closeNavbar = () =>  {
@@ -23,6 +31,10 @@
     const logout = () => {
         signOut(auth)
         closeNavbar()
+        setUserProperties(analytics, { 
+            email: ""
+        });
+        logEvent(analytics, 'logout')
         window.location.href = base ? base : "/";
     }
 </script>
@@ -35,7 +47,7 @@
         {#if userData}
             <li class="cursor-pointer" on:click={logout}>Logout</li>
         {:else}
-            <li class="cursor-pointer" on:click={() => handleHref('/login')}>Login</li>
+            <li class="cursor-pointer" on:click={() => handleHref('login')}>Login</li>
         {/if}
     </ul>
 </nav>
