@@ -40,6 +40,7 @@
 
     const checkout = () => {
         logEvent(analytics, 'begin_checkout', viewCartLog);
+        logEvent(analytics, 'purchase', viewCartLog);
         remove(refDb).finally((snapshot) => {
             console.log(snapshot)
             updateData(snapshot)
