@@ -36,7 +36,7 @@
         window.location.href = base ? base : "/";
     }
 </script>
-<nav class="absolute z-20 bg-green-400 w-1/4 h-[100vh] px-4 py-2 text-white">
+<nav class="absolute z-20 bg-green-400 w-1/2 md:w-1/4 lg:w-1/5 h-[100vh] px-4 py-2 text-white">
     <div class="w-full text-right">
         <button on:click={closeNavbar} class="w-10 h-10"><IoIosClose/></button>
     </div>
