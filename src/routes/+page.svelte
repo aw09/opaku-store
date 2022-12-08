@@ -38,8 +38,8 @@
 <head>
     <title>Home</title>
 </head>
-<section id="campaign-list" class="py-2">
-    <div class="flex gap-2 relative overflow-x-scroll pb-2">
+<section id="campaign-list" class="py-2 overflow-x-scroll">
+    <div class="flex gap-2 relative min-w-max overflow-x-scroll pb-2">
     {#each dataCampaign as campaign, index}
         {#if campaign }
             <CampaignCard {...campaign} id={index} />

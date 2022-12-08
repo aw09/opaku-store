@@ -11,6 +11,6 @@
     }
 </script>
 
-<div on:click={handleClick} class="campaign-card min-w-[15rem] h-28 border-2 border-gray-300 rounded-lg cursor-pointer overflow-hidden">
+<div on:click={handleClick} class="campaign-card w-60 h-28 border-2 border-gray-300 rounded-lg cursor-pointer overflow-hidden">
     <img src={thumbnail} alt="{name}-thumbnail">
 </div>
